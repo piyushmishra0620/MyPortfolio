@@ -1,0 +1,1355 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <title>MyPortfolio</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,height=device-height,user-scalable=yes,initial-scale=1.0,maximum-scale=5.0,minimum-scale=0.25">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        <style>
+            *{
+                box-sizing:border-box;
+            }
+            :root{
+                --pos-left:23%;--nav-width:450px;
+                --nav-height:4%;
+                --padding-left:40px;
+                --margin-top:16px;
+            }
+            html,body{
+                margin:0;background-color:rgba(0, 0, 0, 0.759);-webkit-tap-highlight-color:transparent;user-select:none;scroll-behavior:smooth;
+            }
+            #main{
+                width:100vw;background-color:rgb(13, 11, 11);height:2550px;
+            }
+            #navigation_bar{
+                width:100vw;border-bottom:white 0.7px solid;cursor:default;box-shadow:0px 0px 6px white;display:grid;grid-template-columns:1fr auto;position:fixed;backdrop-filter:blur(15px);height:85px;z-index:999;top:0;background-color:transparent;
+            }
+            #navigation_bar>a{
+                text-decoration:none;cursor:pointer;justify-self:start;padding-top:0px;margin-top:19px;font-weight:bold;padding-bottom:0px;margin-bottom:19px;padding-left:0px;padding-right:0px;margin-left:5px;
+            }
+            #nav{
+                padding:19px;margin-bottom:5px;margin-top:3px;
+            }
+            #hamburger_menu{
+                display:none;
+            }
+            .bar{
+                width:25px;height:4px;margin:2px;background-color:white;border-radius:12px;
+            }
+            #navigation_bar nav>a{
+                color:white;cursor:pointer;justify-self:center;padding-top:8px;padding-bottom:15px;margin-top:20px;margin-bottom:20px;padding-left:19px;padding-right:19px;margin-right:10px;margin-left:10px;font-weight:bolder;text-decoration:none;
+            }
+            #navigation_bar nav>a:hover{
+                background-color:cyan;color:black;border-radius:12px;border:1px solid cyan;box-shadow:0px 0px 15px cyan;
+            }
+            #navigation_bar nav>a:active{
+                font-size:14.5px;transition:font-size 0.000000001s ease-out;
+            }
+            #AboutME{
+                position:absolute;top:250px;padding:30px;border:1px rgba(150,150,150,0.1) solid;box-shadow:0 8px 32px rgba(0,0,0,0.3),0 0 15px rgba(110,68,255,0.4);border-radius:12px;margin-right:6px;margin-left:20px;background-color:#0D1117;-webkit-backdrop-filter:blur(10px);-webkit-transition:all 1s ease-in-out;color:white;
+            }
+            #AboutME.hover{
+                -webkit-transform:translateY(-2%);
+            }
+            .techstack{
+                position:absolute;top:1160px;left:26rem;background:linear-gradient(90deg,rgb(47, 0, 255),rgb(87, 0, 128),rgb(253, 3, 253));border-radius:15px;padding:20px;border:3px solid purple;box-shadow:0px 0px 10px purple;
+            }
+            #Skills{
+                position:absolute;top:1300px;width:99vw;display:flex;flex-direction:row;height:800px;overflow-x:auto;scrollbar-width:none;-ms-overflow-style: none;border:1px solid rgba(150,150,150,0.1);border-radius:15px;margin-left:6px;box-shadow:0 8px 32px rgba(0,0,0,0.3),0 0 15px rgba(110,68,255,0.4);background-color:#0D1117;-webkit-backdrop-filter:blur(10px);color:white;padding-top:20px;
+            }
+            #Skills::-webkit-scrollbar{
+                display:none;
+            }
+            #HTML,#CSS,#JS,#C,#python,#Cpp,#Java,#git{
+                width:700px;height:700px;padding:70px;margin:30px;border:5px solid rgba(136, 109, 236, 0.781);border-radius:15px;box-shadow:0px 8px 32px 10px rgba(0,0,0,0.3),0 0 15px 10px rgba(110,68,255,0.4);-webkit-transition:transform 0.5s ease-out;
+            }
+            #HTML.hover,#CSS.hover,#JS.hover,#C.hover,#python.hover,#Cpp.hover,#Java.hover,#git.hover{
+                background-color:rgba(136,109,236,0.781);border-color:rgba(143, 117, 234, 0.564);box-shadow:0px 0px 32px rgba(136, 109, 236, 0.781);-webkit-transform:translateY(-2%);
+            }
+            .projects{
+                padding:20px;border:3px solid purple;box-shadow:0px 0px 10px purple;position:absolute;top:2150px;left:25rem;background:linear-gradient(90deg,rgb(47, 0, 255),rgb(87, 0, 128),rgb(253, 3, 253));border-radius:15px;
+            }
+            .btn{
+                color:black;background:linear-gradient(90deg,#008cff,#e100ff);cursor:pointer;position:absolute;left:26.7rem;padding-top:10px;padding-bottom:10px;padding-left:50px;padding-right:50px;border-radius:15px;font-weight:bold;border:blue 2px solid;box-shadow:0px 0px 12px blue;
+            }
+            .btn:hover{
+                background:linear-gradient(135deg,#008cff,#e100ff);box-shadow:2px 2px 50px blue;
+            }
+            .btn:active{
+                background:linear-gradient(135deg,#008cff,#e100ff);box-shadow:2px 2px 50px blue;-webkit-transform:scale(90%);
+            }
+            #projects{
+                position:absolute;top:2270px;
+            }
+            #Contact{
+                width:100vw;position:absolute;top:2370px;padding:30px;border-top:2px white solid;color:white;background-color:rgb(13, 11, 11);
+            }
+            #heading header{
+                display:inline-block;overflow:hidden;white-space:nowrap;border-right:3px solid transparent;width:0;-webkit-animation:type 3.5s steps(40,end) 1s 1 forwards,blink-caret 0.75s linear 1s infinite,stopblinking 0.1s forwards 4.5s;
+            }
+            #Contact a:hover{
+                background-color:red;border-color:rgba(208, 80, 80, 0.464);box-shadow:0px 0px 10px red;
+            }
+            #Contact a:hover i{
+                color:black;
+            }
+            .internalparagraph{
+                font-size:30px;
+            }
+            .headingparagraph{
+                font-size:60px;
+            }
+            .mainheader{
+                font-size:60px;
+            }
+            @keyframes type{
+                to{
+                    width:9ch;border-right-color:transparent;
+                }
+            }
+            @keyframes blink-caret{
+                0%{
+                    border-right-color:red;
+                }50%{
+                    border-right-color:transparent;
+                }
+            }
+            @keyframes stopblinking{
+                to{
+                    border-right-color:transparent;
+                }
+            }
+            @media((max-width:3000px) and (max-height:3000px)){
+                .techstack{
+                    top:1160px;left:26rem;
+                }
+                #Skills{
+                    top:1300px;
+                }
+                .projects{
+                    top:2150px;left:25rem;
+                }
+                .btn{
+                    left:26.7rem;
+                }
+                #projects{
+                    top:2270px;
+                }
+                #Contact{
+                    top:2370px;
+                }
+            }
+            @media(max-height:1500px){
+                #navigation_bar{
+                    height:85px;
+                }
+            }
+            @media(max-height:1000px){
+                #navigation_bar{
+                    height:75px;
+                }
+            }
+            @media(max-height:800px){
+                #navigation_bar{
+                    height:70px;
+                }
+            }
+            @media(max-height:600px){
+                #navigation_bar{
+                    height:65px;
+                }
+            }
+            @media(max-width:900px){
+                #nav{
+                    display:none;
+                }
+                #hamburger_menu{
+                    color:white;display:flex;justify-content:center;align-items:center;width:45px;cursor:pointer;outline:none;border:2px solid white;padding:3px;height:40px;margin-right:25px;margin-top:16px;border-radius:12px;
+                }
+                #hamburger_menu.active .bar:nth-child(2){
+                    opacity:0%;
+                }
+                #hamburger_menu.active .bar:nth-child(1){
+                    transform:rotate(45deg) translateY(5.5px) translateX(4.8px);
+                }
+                #hamburger_menu.active .bar:nth-child(3){
+                    transform:rotate(-45deg) translateY(-6.5px) translateX(5.4px);
+                }
+            }
+            @media((width:820px) and (height:1180px)){
+                .techstack{
+                    top:1280px;left:21rem;
+                }
+                #Skills{
+                    top:1400px;
+                }
+                .projects{
+                    top:2250px;left:19rem;
+                }
+                .btn{
+                    left:20.7rem;
+                }
+                #projects{
+                    top:2370px;
+                }
+                #Contact{
+                    top:2470px;
+                }
+            }
+            @media((hover:none) and (min-width:1100px)){
+                .btn{
+                    left:32.5rem;
+                }
+                .projects{
+                    left:31rem;
+                }
+                .techstack{
+                    left:31.4rem;
+                }
+            }
+            @media((hover:none) and (min-width:1208px)){
+                .btn{
+                    left:33.5rem;
+                }
+                .projects{
+                    left:32rem;
+                }
+            }
+            @media((hover:none) and (min-width:1241px)){
+                .btn{
+                    left:34rem;
+                }
+                .projects{
+                    left:33rem;
+                }
+                .techstack{
+                    left:33rem;
+                }
+            }
+            @media((hover:none) and (min-width:1266px)){
+                .btn{
+                    left:35rem;
+                }
+                .projects{
+                    left:34.5rem;
+                }
+            }
+            @media((hover:none) and (min-width:1326px)){
+                .btn{
+                    left:38rem;
+                }
+                .projects{
+                    left:36rem;
+                }
+                .techstack{
+                    left:35.6rem;
+                }
+            }
+            @media((hover:none) and (min-width:1400px)){
+                .btn{
+                    left:39rem;
+                }
+                .projects{
+                    left:38rem;
+                }
+                .techstack{
+                    left:39.5rem;
+                }
+            }
+            @media((hover:none) and (min-width:1450px)){
+                .btn{
+                    left:41rem;
+                }
+                .projects{
+                    left:40rem;
+                }
+                .techstack{
+                    top:950px;
+                }
+                #Skills{
+                    top:1150px;
+                }
+                .projects{
+                    top:2050px;
+                }
+                #Contact{
+                    top:2270px;
+                }
+                #projects{
+                    top:2170px;
+                }
+            }
+            @media((hover:none) and (min-width:1500px)){
+                .btn{
+                    left:42.5rem;
+                }
+                .projects{
+                    left:41rem;
+                }
+            }
+            @media((hover:none) and (min-width:1600px)){
+                .btn{
+                    left:45rem;
+                }
+                .projects{
+                    left:44rem;
+                }
+                .techstack{
+                    left:44.5rem;
+                }
+            }
+            @media((hover:none) and (min-width:1650px)){
+                .projects{
+                    left:46.5rem;
+                }
+                .btn{
+                    left:47.4rem;
+                }
+                .techstack{
+                    left:46.5rem;
+                }
+            }
+            @media((hover:none) and (min-width:1730px)){
+                .projects{
+                    left:48.6rem;
+                }
+                .btn{
+                    left:50rem;
+                }
+                .techstack{
+                    left:48rem;
+                }
+            }
+            @media((hover:none) and (min-width:1800px)){
+                .techstack{
+                    left:49.5rem;
+                }
+                .btn{
+                    left:52rem;
+                }
+                .projects{
+                    left:51rem;
+                }
+            }
+            @media((hover:none) and (min-width:1850px)){
+                .techstack{
+                    left:50rem;top:925px;
+                }
+                .btn{
+                    left:54rem;
+                }
+                .projects{
+                    left:52rem;
+                }
+            }
+            @media((hover:none) and (min-width:1900px)){
+                .projects{
+                    left:54rem;
+                }
+                .btn{
+                    left:55rem;
+                }
+            }
+            @media((hover:none) and (min-width:1950px)){
+                .techstack{
+                    left:54rem;
+                }
+            }
+            @media((hover:none) and (min-width:2000px)){
+                .techstack{
+                    left:57rem;
+                }
+                .btn{
+                    left:58rem;
+                }
+                .projects{
+                    left:56rem;
+                }
+            }
+            @media((hover:none) and (min-width:2050px)){
+                .btn{
+                    left:59rem;
+                }
+                .projects{
+                    left:57rem;
+                }
+            }
+            @media((hover:none) and (min-width:2100px)){
+                .btn{
+                    left:61rem;
+                }
+                .projects{
+                    left:58.6rem;
+                }
+                .techstack{
+                    left:57.8rem;
+                }
+            }
+            @media((hover:none) and (min-width:2150px)){
+                .btn{
+                    left:62.4rem;
+                }
+                .projects{
+                    left:60rem;
+                }
+                .techstack{
+                    left:59rem;
+                }
+            }
+            @media((hover:none) and (min-width:2223px)){
+                .btn{
+                    left:63.8rem;
+                }
+                .projects{
+                    left:61.7rem;
+                }
+            }
+            @media((hover:none) and (min-width:2300px)){
+                .btn{
+                    left:67rem;
+                }
+                .projects{
+                    left:66rem;
+                }
+                .techstack{
+                    left:65rem;
+                }
+            }
+            @media((hover:none) and (min-width:2350px)){
+                .btn{
+                    left:68rem;
+                }
+                .projects{
+                    left:67rem;
+                }
+            }
+            @media((hover:none) and (max-width:1000px)){
+                #AboutME{
+                    top:200px;
+                }
+                .btn{
+                    left:25.9rem;
+                }
+                .projects{
+                    left:24.5rem;
+                }
+            }
+            @media((hover:none) and (max-width:944px)){
+                .techstack{
+                    top:1176px;left:25rem;
+                }
+                .btn{
+                    left:23.8rem;
+                }
+                .projects{
+                    left:22.2rem;
+                }
+            }
+            @media((hover:none) and (max-width:920px)){
+                #Contact{
+                    top:2350px;
+                }
+            }
+            @media((hover:none) and (max-width:867px)){
+                .btn{
+                    left:22.5rem;
+                }
+                .projects{
+                    left:20.7rem;
+                }
+                .techstack{
+                    left:24rem;
+                }
+            }
+            @media((hover:none) and (max-width:859px)){
+                #AboutME{
+                    top:200px;
+                }
+                .btn{
+                    left:21.9rem;
+                }
+                .techstack{
+                    left:23rem;
+                }
+                .projects{
+                    left:19.5rem;
+                }
+            }
+            @media((hover:none) and (max-width:837px)){
+                .techstack{
+                    top:1195px;
+                }
+                .btn{
+                    left:20.8rem;
+                }
+            }
+            @media((hover:none) and (max-width:830px)){
+                .techstack{
+                    top:1240px;
+                }
+                #Skills{
+                    top:1350px;
+                }
+                .projects{
+                    top:2210px;
+                }
+                #projects{
+                    top:2330px;
+                }
+                #Contact{
+                    top:2430px;
+                }
+            }
+            @media((hover:none) and (max-width:801px)){
+                .techstack{
+                    left:21.5rem;
+                }
+                .btn{
+                    left:20rem;
+                }
+                .projects{
+                    left:18rem;
+                }
+            }
+            @media((hover:none) and (max-width:765px)){
+                .techstack{
+                    top:1270px;left:20rem;
+                }
+                #Skills{
+                    top:1380px;
+                }
+                .projects{
+                    top:2250px;
+                }
+                #projects{
+                    top:2370px;
+                }
+                #Contact{
+                    top:2470px;
+                }
+                .btn{
+                    left:18rem;
+                }
+                .projects{
+                    left:17rem;
+                }
+            }
+            @media((hover:none) and (max-width:745px)){
+                .techstack{
+                    top:1300px;left:19rem;
+                }
+                #Skills{
+                    top:1410px;
+                }
+                .projects{
+                    top:2300px;
+                }
+                #projects{
+                    top:2420px;
+                }
+                #Contact{
+                    top:2500px;
+                }
+            }
+            @media((hover:none) and (max-width:712px)){
+                .techstack{
+                    top:1340px;left:17rem;
+                }
+                #Skills{
+                    top:1460px;
+                }
+                .projects{
+                    top:2360px;
+                }
+                #projects{
+                    top:2480px;
+                }#Contact{
+                    top:2550px;
+                }
+                .projects{
+                    left:15.5rem;
+                }
+                .btn{
+                    left:17rem;
+                }
+            }
+            @media((hover:none) and (max-width:688px)){
+                #main{
+                    height:2850px;
+                }
+                .techstack{
+                    top:1470px;left:16rem;
+                }
+                #Skills{
+                    top:1600px;
+                }
+                .projects{
+                    top:2500px;left:14.5rem;
+                }
+                #projects{
+                    top:2650px;
+                }
+                #Contact{
+                    top:2750px;
+                }
+                .btn{
+                    left:16rem;
+                }
+            }
+            @media((hover:none) and (max-width:640px)){
+                .techstack{
+                    left:15.4rem;
+                }
+                .btn{
+                    left:15.6rem;
+                }
+            }
+            @media((hover:none) and (max-width:620px)){
+                .techstack{
+                    top:1550px;left:15rem;
+                }
+                #Skills{
+                    top:1700px;
+                }
+                .projects{
+                    top:2575px;left:12.8rem;
+                }
+                #projects{
+                    top:2730px;left
+                }
+                .btn{
+                    left:14rem;
+                }
+                #Contact{
+                    top:2800px;
+                }
+            }
+            @media((hover:none) and (max-width:595px)){
+                .internalparagraph{
+                    font-size:28px;
+                }
+                .techstack{
+                    left:14rem;top:1500px;
+                }
+                .btn{
+                    left:13rem;
+                }
+                .projects{
+                    left:12rem;
+                }
+            }
+            @media((hover:none) and (max-width:540px)){
+                .internalparagraph{
+                    font-size:26px;
+                }
+                .headingparagraph{
+                    font-size:40px;
+                }
+                .projects{
+                    left:11rem;
+                }
+                .btn{
+                    left:11.3rem;
+                }
+                .techstack{
+                    left:12.5rem;top:1450px;
+                }
+            }
+            @media((hover:none) and (max-width:501px)){
+                #HTML,#CSS,#JS,#C,#python,#Cpp,#Java,#git{
+                    width:300px;padding:20px;
+                }
+                .internalparagraph{
+                    font-size:24px;
+                }
+                .techstack{
+                    left:11.8rem;top:1430px;
+                }
+                .projects{
+                    left:10.5rem;
+                }
+            }
+            @media((hover:none) and (max-width:485px)){
+                .techstack{
+                    left:10.4rem;
+                }
+                .projects{
+                    left:9.7rem;
+                }
+                .btn{
+                    left:10.4rem;
+                }
+            }
+            @media((hover:none) and (max-width:465px)){
+                .projects{
+                    left:9.4rem;
+                }
+                .btn{
+                    left:9.6rem;
+                }
+            }
+            @media((hover:none) and (max-width:435px)){
+                .internalparagraph{
+                    font-size:22px;
+                }
+                .headingparagraph{
+                    font-size:30px;
+                }
+                .mainheader{
+                    font-size:40px;
+                }
+                .techstack{
+                    left:9.7rem;top:1400px;
+                }
+                .btn{
+                    left:9rem;
+                }
+                .projects{
+                    left:8.3rem;
+                }
+            }
+            @media((hover:none) and (max-width:418px)){
+                .techstack{
+                    left:9rem;
+                }
+                .btn{
+                    left:8rem;
+                }
+                .projects{
+                    left:7rem;
+                }
+            }
+            @media((hover:none) and (max-width:400px)){
+                .techstack{
+                    left:8.5rem;
+                }
+            }
+            @media((hover:none) and (max-width:387px)){
+                .internalparagraph{
+                    font-size:20px;
+                }
+                .techstack{
+                    top:1300px;left:7rem;
+                }
+                .btn{
+                    left:7rem;
+                }
+                .projects{
+                    left:6rem;top:2350px;
+                }
+                 #Skills{
+                    top:1500px;
+                }
+                #projects{
+                    top:2500px;
+                }
+            }
+            @media((hover:none) and (max-width:354px)){
+                .internalparagraph{
+                    font-size:18px;
+                }
+            }
+            @media(hover:hover){
+                .techstack{
+                    top:960px;left:39rem;
+                }
+                #Skills{
+                    top:1150px;
+                }
+                .projects{
+                    top:2025px;left:40rem;
+                }
+                .btn{
+                    left:41.4rem;
+                }
+            }
+            @media((hover:hover) and (min-width:1519px)){
+                .btn{
+                    left:44rem;
+                }
+                .techstack{
+                    left:42rem;
+                }
+                .projects{
+                    left:42.5rem;
+                }
+            }
+            @media((hover:hover) and (min-width:1600px)){
+                .btn{
+                    left:45rem;
+                }
+                .techstack{
+                    left:44rem;
+                }
+                .projects{
+                    left:43.3rem;
+                }
+            }
+            @media((hover:hover) and (min-width:1650px)){
+                .btn{
+                    left:48rem;
+                }
+                .techstack{
+                    left:46rem;
+                }
+                .projects{
+                    left:47rem;
+                }
+            }
+            @media((hover:hover) and (min-width:1720px)){
+                .btn{
+                    left:50rem;
+                }
+                .techstack{
+                    left:48rem;
+                }
+                .projects{
+                    left:49rem;
+                }
+            }
+            @media((hover:hover) and (min-width:1800px)){
+                .btn{
+                    left:53rem;
+                }
+                .techstack{
+                    left:50rem;
+                }
+                .projects{
+                    left:51rem;
+                }
+            }
+            @media((hover:hover) and (min-width:1900px)){
+                .btn{
+                    left:55rem;
+                }
+                .techstack{
+                    left:54rem;
+                }
+                .projects{
+                    left:54rem;
+                }
+            }
+            @media((hover:hover) and (min-width:2000px)){
+                .btn{
+                    left:59rem;
+                }
+                .techstack{
+                    left:57rem;
+                }
+                .projects{
+                    left:55.5rem;
+                }
+            }
+            @media((hover:hover) and (min-width:2100px)){
+                .btn{
+                    left:62rem;
+                }
+                .techstack{
+                    left:58.5rem;
+                }
+                .projects{
+                    left:59rem;
+                }
+            }
+            @media((hover:hover) and (min-width:2200px)){
+                .btn{
+                    left:64.6rem;
+                }
+                .techstack{
+                    left:64.4rem;
+                }
+                .projects{
+                    left:63.8rem;
+                }
+            }
+            @media((hover:hover) and (min-width:2300px)){
+                .btn{
+                    left:66.5rem;
+                }
+                .techstack{
+                    left:65.5rem;
+                }
+                .projects{
+                    left:65.6rem;
+                }
+            }
+            @media((hover:hover) and (min-width:2350px)){
+                .btn{
+                    left:68rem;
+                }
+                .techstack{
+                    left:66.6rem;
+                }
+                .projects{
+                    left:66rem;
+                }
+            }
+            @media((hover:hover) and (max-width:1500px)){
+                .techstack{
+                    top:1030px;
+                }
+            }
+            @media((hover:hover) and (max-width:1450px)){
+                .techstack{
+                    left:39rem;
+                }
+                .projects{
+                    left:38rem;
+                }
+                .btn{
+                    left:39.6rem;
+                }
+            }
+            @media((hover:hover) and (max-width:1400px)){
+                .techstack{
+                    left:36.6rem;
+                }
+                .btn{
+                    left:38rem;
+                }
+                .projects{
+                    left:36.9rem;
+                }
+            }
+            @media((hover:hover) and (max-width:1350px)){
+                .projects{
+                    left:34rem;
+                }
+                .btn{
+                    left:36rem;
+                }
+            }
+            @media((hover:hover) and (max-width:1300px)){
+                .techstack{
+                    left:35rem;
+                }
+                .btn{
+                    left:34rem;
+                }
+                .projects{
+                    left:33rem;
+                }
+            }
+            @media((hover:hover) and (max-width:1240px)){
+                .btn{
+                    left:32rem;
+                }
+                .projects{
+                    left:31.5rem;
+                }
+                .techstack{
+                    left:33rem;
+                }
+            }
+            @media((hover:hover) and (max-width:1170px)){
+                .btn{
+                    left:30rem;
+                }
+                .projects{
+                    left:29rem;
+                }
+                .techstack{
+                    left:31rem;
+                }
+                #AboutME{
+                    top:200px;
+                }
+            }
+            @media((hover:hover) and (max-width:1062px)){
+                .techstack{
+                    top:1060px;left:28rem;
+                }
+                #Skills{
+                    top:1160px;
+                }
+                .projects{
+                    top:2050px;left:25rem;
+                }
+                .btn{
+                    left:27rem;
+                }
+            }
+            @media((hover:hover) and (max-width:1000px)){
+                .techstack{
+                    left:26rem;
+                }
+                .btn{
+                    left:25rem;
+                }
+                .projects{
+                    left:23.5rem;
+                }
+            }
+            @media((hover:hover) and (max-width:986px)){
+                .internalparagraph{
+                    font-size:28px;
+                }
+            }
+            @media((hover:hover) and (max-width:951px)){
+                .techstack{
+                    top:1040px;
+                }
+                .btn{
+                    left:24.5rem;
+                }
+            }
+            @media((hover:hover) and (max-width:926px)){
+                .internalparagraph{
+                    font-size:25px;
+                }
+                .techstack{
+                    left:23rem;
+                }
+                .btn{
+                    left:21.5rem;
+                }
+                .projects{
+                    left:21.5rem;
+                }
+            }
+            @media((hover:hover) and (max-width:800px)){
+                .techstack{
+                    left:21rem;
+                }
+                .btn{
+                    left:19rem;
+                }
+                .projects{
+                    left:18rem;
+                }
+            }
+            @media((hover:hover) and (max-width:750px)){
+                .internalparagraph{
+                    font-size:24px;
+                }
+                .techstack{
+                    left:18rem;
+                }
+                .btn{
+                    left:17rem;
+                }
+                .projects{
+                    left:16.6rem;
+                }
+            }
+            @media((hover:hover) and (max-width:687px)){
+                .internalparagraph{
+                    font-size:22px;
+                }
+                .techstack{
+                    left:15rem;
+                }
+                .btn{
+                    left:15rem;
+                }
+                .projects{
+                    left:14rem;
+                }
+            }
+            @media((hover:hover) and (max-width:615px)){
+                .internalparagraph{
+                    font-size:20px;
+                }
+                .techstack{
+                    left:13rem;
+                }
+                .btn{
+                    left:12.5rem;
+                }
+                .projects{
+                    left:11rem;
+                }
+            }
+            @media((hover:hover) and (max-width:551px)){
+                .techstack{
+                    left:11rem;
+                }
+                .btn{
+                    left:11rem;
+                }
+                .projects{
+                    left:10rem;
+                }
+            }
+            @media((hover:hover) and (max-width:511px)){
+                .headingparagraph{
+                    font-size:40px;
+                }
+                .techstack{
+                    left:9rem;
+                }
+                .btn{
+                    left:10.5rem;
+                }
+                .projects{
+                    left:9rem;
+                }
+            }
+            @media((hover:hover) and (max-width:465px)){
+                .internalparagraph{
+                    font-size:18px;
+                }
+                .btn{
+                    left:9rem;
+                }
+                .techstack{
+                    left:9.5rem;
+                }
+                .projects{
+                    left:8.5rem;
+                }
+                #HTML,#CSS,#JS,#C,#python,#Cpp,#Java,#git{
+                    width:300px;padding:20px;
+                }
+            }
+            @media((hover:hover) and (max-width:426px)){
+                .internalparagraph{
+                    font-size:16px;
+                }
+                .btn{
+                    left:8.5rem;
+                }
+                .projects{
+                    left:8rem;
+                }
+                .techstack{
+                    left:8.75rem;
+                }
+                .mainheader{
+                    font-size:38px;
+                }
+            }
+            @media((hover:hover) and (max-width:392px)){
+                .btn{
+                    left:7.5rem;
+                }
+                .projects{
+                    left:6.5rem;
+                }
+                .techstack{
+                    left:7rem;
+                }
+            }
+            #navigation_menu{
+                padding:20px;border-radius:15px;position:fixed;top:85px;background-color:transparent;border:1px solid white;width:var(--nav-width);left:120%;height:350px;z-index:999;backdrop-filter:blur(15px);transition:left 0.25s ease-out;
+            }
+            #navigation_menu.active{
+                left:var(--pos-left);
+            }
+            #toggle_navbar{
+                position:absolute;top:4%;width:90%;
+            }
+            #toggle_navbar li{
+                padding:20px;cursor:pointer;margin:8px;display:flex;justify-content:center;
+            }
+            #toggle_navbar li:hover{
+                background-color:cyan;color:black;border-radius:12px;border:1px solid cyan;box-shadow:0px 0px 15px cyan;
+            }
+            #toggle_navbar li:active{
+                font-size:14.5px;transition:font-size 0.000000001s ease-out;
+            }
+            #toggle_navbar li a{
+                color:white;text-decoration:none;font-size:larger;font-weight:bold;
+            }
+            #toggle_navbar ul{
+                padding-right:15px;place-self:center;
+            }
+            @media((hover:none) and (max-width:800px)){
+                :root{
+                    --pos-left:21%;
+                }
+            }
+            @media((hover:none) and (max-width:740px)){
+                :root{
+                    --pos-left:18%;
+                }
+            }
+            @media((hover:none) and (max-width:600px)){
+                :root{
+                    --nav-width:350px;--pos-left:15%;
+                }
+            }
+            @media((hover:none) and (max-width:500px)){
+                :root{
+                    --pos-left:13%;
+                }
+            }
+            @media((hover:none) and (max-width:450px)){
+                :root{
+                    --pos-left:9%;
+                }
+            }
+            @media((hover:none) and (max-width:418px)){
+                :root{
+                    --nav-width:300px;
+                }
+            }
+            @media((hover:none) and (max-width:368px)){
+                :root{
+                    --pos-left:5%;
+                }
+            }
+            @media((hover:none) and (max-width:338px)){
+                :root{
+                    --pos-left:2%;
+                }
+            }
+            @media((hover:hover) and (max-width:800px)){
+                :root{
+                    --pos-left:20%;
+                }
+            }
+            @media((hover:hover) and (max-width:700px)){
+                :root{
+                    --pos-left:14%;
+                }
+            }
+            @media((hover:hover) and (max-width:650px)){
+                :root{
+                    --pos-left:10%;
+                }
+            }
+            @media((hover:hover) and (max-width:570px)){
+                :root{
+                    --pos-left:7%;
+                }
+            }
+            @media((hover:hover) and (max-width:550px)){
+                :root{
+                    --pos-left:3%;
+                }
+            }
+            @media((hover:hover) and (max-width:492px)){
+                :root{
+                    --nav-width:300px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div id="main">
+            <div id="navigation_bar">
+                <a href="index.html"><span style="color:darkred;font-size:24px">M</span><span style="color:darkblue;font-size:24px">y</span><span style="color:green;font-size:24px">P</span><span style="color:blue;font-size:24px">o</span><span style="color:rgb(21, 165, 243);font-size:24px">r</span><span style="color:crimson;font-size:24px">t</span><span style="color:orangered;font-size:24px">f</span><span style="color:red;font-size:24px">o</span><span style="color:rgb(184, 237, 10);font-size:24px">l</span><span style="color:blue;font-size:24px">i</span><span style="color:yellow;font-size:24px">o</span></a>
+                <nav id="nav">
+                    <a href="#AboutME">About</a>
+                    <a href="#Skills">Skills</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#Contact">Contact Me</a>
+                </nav>
+                <div id="hamburger_menu">
+                    <span style="display:flex;flex-direction:column;cursor:pointer;justify-content:center;align-items:center">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </span>
+                </div>
+            </div>
+            <div id="navigation_menu">
+                <nav id="toggle_navbar" style="display:flex;flex-direction:column">
+                    <ul style="list-style-type:none;">
+                        <li><a href="#AboutME">About</a></li>
+                        <li><a href="#Skills">Skills</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#Contact">Contact Me</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div id="heading" style="display:flex;justify-content:center">
+                <header class="mainheader" style="background:linear-gradient(to right,rgb(0, 132, 255),rgb(14, 98, 241),rgb(8, 0, 255),rgb(34, 0, 255),rgb(66, 21, 246),rgb(76, 0, 255),rgb(68, 0, 128),rgb(94, 0, 128),rgb(134, 5, 146),rgb(215, 7, 226),rgb(255, 2, 150));-webkit-background-clip:text;-webkit-text-fill-color:transparent;position:absolute;top:100px">My Profile</header>
+            </div>
+            <div id="AboutME">
+                <p class="headingparagraph" style="text-align:center"><u>Know About Me!</u></p>
+                <p class="internalparagraph" style="text-align:start;">I am Piyush Mishra,a first year Computer Science And Engineering undergrad at VSSUT with a deep love for DSA.I am an aspiring Full Stack Web Developer.I am good at solving competitive programming problems, I make codes with simple logic with a go-to approach to solve some complex problems.I slways try to learn new algorithms and solve quite a few coding problems too. As a beginner in the realm of Computer Science, I have learnt basic C,C++,python and java.I am good at front-end web development with having a good hold on HTML,CSS,Js and some of the frameworks of CSS like TailwindCSS.I am currently learning about back-end development and some good and advanced UIs and bow to implement them in webpages.I am looking to learn various frameworks and tools that work at the back-end level and follow my keen interest in AI/ML domain.
+                    <br>I hail from the city of Bhubaneswar, where I did my schooling from Venkateswar English Medium School,Chandrasekharpur and completed class 12th from the same.My hobbies include playing sports,video-games and watching movies.
+                </p>
+            </div>
+            <br>
+            <header style="font-size:30px" class="techstack">TechStack</header>
+            <div id="Skills">
+                <div id="HTML">
+                    <img src="./html-5.png" alt="HTML" title="HTML" load="eager" width="260px" height="260px">
+                    <p style="font-size:60px;color:white;text-align:center">HTML</p>
+                </div>
+                <div id="CSS">
+                    <img src="./css3.png" alt="CSS" title="CSS" load="eager" width="260px" height="260px">
+                    <p style="font-size:60px;color:white;text-align:center">CSS</p>
+                </div>
+                <div id="JS">
+                    <img src="./javascript-logo.png" alt="Js" title="Js" load="eager" width="260px" height="260px">
+                    <p style="font-size:60px;color:white;text-align:center">JavaScript</p>
+                </div>
+                <div id="C">
+                    <img src="./C.png" alt="C" title="C" load="eager" width="260px" height="260px">
+                    <p style="font-size:60px;color:white;text-align:center">C</p>
+                </div>
+                <div id="python">
+                    <img src="./python.png" alt="python" title="python" load="eager" width="260px" height="260px">
+                    <p style="font-size:60px;color:white;text-align:center">Python</p>
+                </div>
+                <div id="Cpp">
+                    <img src="./C++.png" alt="C++" title="C++" load="eager" width="260px" height="260px">
+                    <p style="font-size:60px;color:white;text-align:center">C++</p>
+                </div>
+                <div id="Java">
+                    <img src="./Java.png" alt="Java" title="Java" load="eager" width="260px" height="260px">
+                    <p style="font-size:60px;color:white;text-align:center">Java</p>
+                </div>
+                <div id="git">
+                    <img src="./git.png" alt="git" title="git" load="eager" width="260px" height="260px">
+                    <p style="font-size:60px;color:white;text-align:center">GIT</p>
+                </div>
+            </div>
+            <br>
+            <header style="font-size:30px" class="projects">My Projects ↓</header>
+            <div id="projects">
+                <form action="./projectpage.html" method="get"><button class="btn" target="_self">View Projects</button></form>
+            </div>
+            <div id="Contact">
+                <p style="text-align:center">Made With 💛 By Piyush M.</p>
+                <p style="text-align:center">Connect With Me!</p>
+                <p style="display:flex;flex-direction:row;justify-content:center">
+                    <a href="https://www.linkedin.com/in/piyush-mishra-778540268/" style="width:40px;height:40px;border:1px solid red;border-radius:50%;margin-right:10px;display:flex;justify-content:center;align-items:center;color:red"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/piyushmishra0620" style="width:40px;height:40px;border:1px solid red;border-radius:50%;margin-right:10px;display:flex;justify-content:center;align-items:center;color:red"><i class="fab fa-github"></i></a>
+                    <a href="https://x.com/piyushmish76012?t=FI_NJFuRRNyeqaRc5Q-_Vg&s=08" style="width:40px;height:40px;border:1px solid red;border-radius:50%;margin-right:10px;display:flex;justify-content:center;align-items:center;color:red"><i class="fab fa-x-twitter"></i></a>
+                </p>
+            </div>
+        </div>
+        <script>
+            const ele=document.getElementById("AboutME");
+            ele.addEventListener("mouseenter",()=>{
+                ele.classList.add("hover");
+            });
+            ele.addEventListener("mouseleave",()=>{
+                ele.classList.remove("hover");
+            });
+            ele.addEventListener("touchstart",()=>{
+                ele.classList.add("hover");
+            });
+            ele.addEventListener("touchend",()=>{
+                ele.classList.remove("hover");
+            });
+            const card1=document.getElementById("HTML");const card2=document.getElementById("CSS");const card3=document.getElementById("JS");const card4=document.getElementById("C");const card5=document.getElementById("Cpp");const card6=document.getElementById("Java");const card7=document.getElementById("python");const card8=document.getElementById("git");
+            let arr=[card1,card2,card3,card4,card5,card6,card7,card8];
+            arr.forEach((element)=>{
+                element.addEventListener("mouseenter",()=>{
+                    element.classList.add("hover");
+                });
+                element.addEventListener("mouseleave",()=>{
+                    element.classList.remove("hover");
+                });
+                element.addEventListener("touchstart",()=>{
+                    element.classList.add("hover");
+                });
+                element.addEventListener("touchend",()=>{
+                    element.classList.remove("hover");
+                });
+            });
+            const hamburger=document.getElementById("hamburger_menu");
+            const navmenu=document.getElementById("navigation_menu");
+            hamburger.addEventListener("click",()=>{
+                navmenu.classList.toggle("active");
+                hamburger.classList.toggle("active");
+            });
+        </script>
+    </body>
+</html>        

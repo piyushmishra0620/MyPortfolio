@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <title>MyPortfolio</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, height=device-height, user-scalable=yes, initial-scale=1.0, maximum-scale=5.0, minimum-scale=0.25">
+        <style>
+            :root{
+                --pos-left:34.5%;
+                --nav-width:450px;
+                --nav-height:15%;
+                --padding-left:40px;
+                --margin-top:16px;
+            }
+            *{
+                box-sizing:border-box;
+            }
+            html,body{
+                margin:0;background-color:rgb(13, 11, 11);-webkit-tap-highlight-color:transparent;user-select:none;scroll-behavior:smooth;right:0px;
+            }
+            #main{
+                width:100vw;background-color:rgb(13, 11, 11);height:1600px;right:0px;
+            }
+            #navigation_bar{
+                width:105vw;border-bottom:white 0.7px solid;cursor:default;box-shadow:0px 0px 6px white;display:grid;grid-template-columns:auto 1fr;position:fixed;top:0;height:66px;z-index:999;backdrop-filter:blur(15px);background-color:transparent;right:0px;
+            }
+            #hamburger_menu{
+                justify-self:end;margin-right:20px;width:45px;height:40px;border:2px solid white;margin-top:8px;padding:5px;border-radius:12px;
+            }
+            #hamburger_menu.active .bar:nth-child(2){
+                opacity:0%;
+            }
+            #hamburger_menu.active .bar:nth-child(1){
+                transform:rotate(45deg) translateY(5.5px) translateX(5.5px);
+            }
+            #hamburger_menu.active .bar:nth-child(3){
+                transform:rotate(-45deg) translateY(-5.5px) translateX(6.0px);
+            }
+            .bar{
+                width:25px;height:4px;margin:2px;background-color:white;border-radius:12px;
+            }
+            #navigation_bar>a{
+                text-decoration:none;cursor:pointer;justify-self:start;padding-top:0px;margin-top:19px;font-weight:bold;padding-bottom:0px;margin-bottom:19px;padding-left:0px;padding-right:0px;margin-right:20px;
+            }
+            @media((hover:none) and (pointer:coarse)){
+                #navigation_bar>a{
+                    margin-left:80px;
+                }
+            }
+            @media((hover:hover)){
+                #navigation_bar{
+                    width:100vw;
+                }
+                #navigation_bar>a{
+                    margin-left:20px;
+                }
+            }
+            #navigation_menu{
+                padding:20px;border-radius:15px;position:fixed;top:85px;background-color:transparent;border:1px solid white;width:var(--nav-width);left:100%;height:350px;z-index:999;backdrop-filter:blur(15px);transition:left 0.25s ease-out;
+            }
+            #navigation_menu.active{
+                left:var(--pos-left);
+            }
+            @media((hover:none) and (min-width:2200px)){
+                :root{
+                    --pos-left:75%;
+                }
+            }
+            @media((hover:none) and (min-width:2016px)){
+                :root{
+                    --pos-left:70%;
+                }
+            }
+            @media((hover:none) and (min-width:1920px)){
+                :root{
+                    --pos-left:41%;
+                }
+            }
+            @media((hover:none) and (min-width:1832px)){
+                :root{
+                    --pos-left:38%;
+                }
+            }
+            @media((hover:none) and (min-width:1696px)){
+                :root{
+                    --pos-left:36%;
+                }
+            }
+            @media((hover:none) and (max-width:1560px)){
+                :root{
+                    --pos-left:33.5%;
+                }
+            }
+            @media((hover:none) and (max-width:1400px)){
+                :root{
+                    --pos-left:32.5%;
+                }
+            }
+            @media((hover:none) and (max-width:1200px)){
+                :root{
+                    --pos-left:31%;
+                }
+            }
+            @media((hover:none) and (max-width:1000px)){
+                :root{
+                    --pos-left:25%;
+                }
+            }
+            @media((hover:none) and (max-width:800px)){
+                :root{
+                    --pos-left:22.5%;
+                }
+            }
+            @media((hover:none) and (max-width:700px)){
+                :root{
+                    --pos-left:20%;
+                }
+            }
+            @media((hover:none) and (max-width:600px)){
+                :root{
+                    --nav-width:350px;
+                    --nav-height:13%;
+                    --padding-left:20px;
+                    --margin-top:24px;
+                }
+            }
+            @media((hover:none) and (max-width:550px)){
+                :root{
+                    --pos-left:17%;
+                }
+            }
+            @media((hover:none) and (max-width:480px)){
+                :root{
+                    --pos-left:15%;
+                }
+            }
+            @media((hover:none) and (max-width:450px)){
+                :root{
+                    --nav-width:330px;
+                }
+            }
+            @media((hover:none) and (max-width:420px)){
+                :root{
+                    --pos-left:11%;
+                }
+            }
+            @media((hover:none) and (max-width:380px)){
+                :root{
+                    --nav-width:300px;--padding-left:16px;
+                }
+            }
+            @media((hover:none) and (max-width:350px)){
+                :root{
+                    --pos-left:6.5%;
+                }
+            }
+            @media((hover:hover) and (max-width:1400px)){
+                :root{
+                    --pos-left:31%;
+                }
+            }
+            @media((hover:hover) and (max-width:1150px)){
+                :root{
+                    --pos-left:28%;
+                }
+            }
+            @media((hover:hover) and (max-width:950px)){
+                :root{
+                    --pos-left:25%;
+                }
+            }
+            @media((hover:hover) and (max-width:780px)){
+                :root{
+                    --pos-left:18%;
+                }
+            }
+            @media( (hover:hover) and (max-width:580px)){
+                :root{
+                    --pos-left:9%;
+                }
+            }
+            @media( (hover:hover) and (max-width:530px)){
+                :root{
+                    --pos-left:5%;
+                }
+            }
+            #toggle_navbar{
+                position:absolute;top:var(--nav-height);width:90%;
+            }
+            #toggle_navbar li{
+                padding:20px;cursor:pointer;margin:24px;display:flex;justify-content:center;
+            }
+            #toggle_navbar li:hover{
+                background-color:cyan;border-radius:12px;border:1px solid cyan;box-shadow:0px 0px 15px cyan;
+            }
+            #toggle_navbar li:hover a{
+                color:black;
+            }
+            #toggle_navbar li:active{
+                font-size:14.5px;transition:font-size 0.000000001s ease-out;
+            }
+            #toggle_navbar li a{
+                color:white;text-decoration:none;font-size:larger;font-weight:bold;
+            }
+            #toggle_navbar ul{
+                padding-right:15px;place-self:center;padding-left:var(--padding-left);margin-top:var(--margin-top);
+            }
+            #heading header{
+                display:inline-block;overflow:hidden;white-space:nowrap;border-right:3px solid transparent;width:0;-webkit-animation:type 3.5s steps(40,end) 1s 1 forwards,blink-caret 0.75s linear 1s infinite,stopblinking 0.1s forwards 4.5s;font-size:60px;
+            }
+            #showcase{
+                position:absolute;top:190px;height:1000px;padding:40px;padding-right:20px;width:98vw;border:2px rgba(150,150,150,0.1) solid;border-radius:15px;display:flex;justify-content:center;padding-top:10px;box-shadow:0 8px 32px rgba(0,0,0,0.3),0 0 15px rgba(110,68,255,0.4);-webkit-backdrop-filter:blur(10px);background:#0D1117;color:white;margin-left:34px;
+            }
+            .projects{
+                width:250px;height:450px;padding:35px;margin:15px;border:5px solid rgba(136, 109, 236, 0.781);border-radius:15px;padding-left:45px;box-shadow:0px 8px 32px 10px rgba(0,0,0,0.3),0 0 15px 10px rgba(110,68,255,0.4);-webkit-transition:transform 0.5s ease-out;
+            }
+            .projects.hover{
+                 background-color:rgba(136,109,236,0.781);border-color:rgba(143, 117, 234, 0.564);box-shadow:0px 0px 32px rgba(136, 109, 236, 0.781);-webkit-transform:translateY(-1%);
+            }
+            #Contact{
+                width:105vw;position:absolute;top:1300px;padding:30px;border-top:2px white solid;color:white;background-color:rgb(13, 11, 11);
+            }
+            @media( (hover:hover) and (max-width:800px) ){
+                #Contact{
+                    width:106vw;
+                }
+            }
+            @media( (hover:none) and (max-width:600px) ){
+                #navigation_bar{
+                    width:106vw;
+                }
+                #Contact{
+                    width:105.5vw;
+                }
+            }
+            @media( (hover:none) and (max-width:500px) ){
+                #navigation_bar{
+                    width:106.4vw;
+                }
+                #Contact{
+                    width:106vw;
+                }
+            }
+            @media( (hover:none) and (max-width:470px) ){
+                #navigation_bar{
+                    width:106.7vw;
+                }
+                #Contact{
+                    width:106.5vw;
+                }
+            }
+            @media( (hover:none) and (max-width:449px) ){
+                #navigation_bar{
+                    width:107vw;
+                }
+                #Contact{
+                    width:107vw;
+                }
+            }
+            @media( (hover:none) and (max-width:400px) ){
+                #navigation_bar{
+                    width:108vw;
+                }
+                #Contact{
+                    width:108vw;
+                }
+            }
+            @media( (hover:none) and (max-width:375px) ){
+                #navigation_bar{
+                    width:109vw;
+                }
+                #Contact{
+                    width:109vw;
+                }
+            }    
+            @keyframes type{
+                to{
+                    width:10ch;border-right-color:transparent;
+                }
+            }
+            @keyframes blink-caret{
+                0%{
+                    border-right-color:red;
+                }50%{
+                    border-right-color:transparent;
+                }
+            }
+            @keyframes stopblinking{
+                to{
+                    border-right-color:transparent;
+                }
+            }
+            .go{
+                color:black;background:linear-gradient(90deg,#008cff,#e100ff);cursor:pointer;place-self:center;border-radius:50%;padding-bottom:5px;font-weight:bolder;border:0px;
+            }
+            #Contact a:hover{
+                background-color:red;border-color:rgba(208, 80, 80, 0.464);box-shadow:0px 0px 10px red;
+            }
+            #Contact a:hover i{
+                color:black;
+            }
+            @media(max-height:1500px){
+                #navigation_bar{
+                    height:75px;
+                }
+            }
+            @media(max-height:1000px){
+                #navigation_bar{
+                    height:65px;
+                }
+            }
+            @media(max-height:800px){
+                #navigation_bar{
+                    height:60px;
+                }
+            }
+            @media(max-height:600px){
+                #navigation_bar{
+                    height:55px;
+                }
+            }
+            @media(max-width:550px){
+                #heading header{
+                    font-size:40px;
+                }
+            }
+            @media(max-width:900px){
+                #navigation_bar{
+                    grid-template-columns:1fr auto;
+                }
+                #nav{
+                    display:none;
+                }
+                #hamburger_menu{
+                    color:white;display:flex;justify-content:center;align-items:center;width:45px;cursor:pointer;outline:none;border:2px solid white;padding:3px;height:40px;margin-right:25px;margin-top:8px;border-radius:12px;
+                }
+                #hamburger_menu.active .bar:nth-child(2){
+                    opacity:0%;
+                }
+                #hamburger_menu.active .bar:nth-child(1){
+                    transform:rotate(45deg) translateY(5.5px) translateX(5.5px);
+                }
+                #hamburger_menu.active .bar:nth-child(3){
+                    transform:rotate(-45deg) translateY(-5.87px) translateX(6.4px);
+                }
+            }
+        </style>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">    
+    </head>
+    <body>
+        <div id="main">
+            <div id="navigation_bar">
+                <a href="index.html"><span style="color:darkred;font-size:24px">M</span><span style="color:darkblue;font-size:24px">y</span><span style="color:green;font-size:24px">P</span><span style="color:blue;font-size:24px">o</span><span style="color:rgb(21, 165, 243);font-size:24px">r</span><span style="color:crimson;font-size:24px">t</span><span style="color:orangered;font-size:24px">f</span><span style="color:red;font-size:24px">o</span><span style="color:rgb(184, 237, 10);font-size:24px">l</span><span style="color:blue;font-size:24px">i</span><span style="color:yellow;font-size:24px">o</span></a>
+                <div id="hamburger_menu">
+                    <span style="display:flex;flex-direction:column;cursor:pointer;justify-content:center;align-items:center">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </span>
+                </div>
+            </div>
+            <div id="navigation_menu">
+                <nav id="toggle_navbar" style="display:flex;flex-direction:column">
+                    <ul style="list-style-type:none">
+                        <li><a href="#showcase">Projects</a></li>
+                        <li><a href="#Contact">Contact Me</a></li>
+                    </ul>
+                </nav>
+            </div><br>
+            <div id="heading" style="display:flex;justify-content:center;position:absolute;top:85px;width:100vw">
+                <header style="background:linear-gradient(to right,rgb(0, 132, 255),rgb(14, 98, 241),rgb(8, 0, 255),rgb(34, 0, 255),rgb(66, 21, 246),rgb(76, 0, 255),rgb(68, 0, 128),rgb(94, 0, 128),rgb(134, 5, 146),rgb(215, 7, 226),rgb(255, 2, 150));-webkit-background-clip:text;-webkit-text-fill-color:transparent">My Projects</header>
+            </div>
+            <div id="showcase">
+                <div class="projects">
+                    <img src="./Screenshot 2025-05-28 161119.png" alt="BookShopOnline" title="BookShopOnline" load="eager" width="150px" height="150px">
+                    <p style="text-align:center;font-size:larger;color:white"><u>BookShopOnline</u></p>
+                    <p style="text-align:start;font-size:13px;color:white">An e-commerce webpage built using HTML and CSS, BookShopOnline is a visually appealing landing page prototype for selling books. It includes sections for categories and featured books but lacks back-end functionality, serving purely as a front-end design template.</p>
+                    <form action="https://clonepiyushmishra0620.github.io/BookShopOnline/" method="get" target="_blank" style="text-align:center">
+                        <button type="submit" class="go">↗</button>
+                    </form>
+                </div>
+            </div>
+             <div id="Contact">
+                <p style="text-align:center;width:100vw">Made With 💛 By Piyush M.</p>
+                <p style="text-align:center;width:100vw">Connect With Me!</p>
+                <p style="display:flex;flex-direction:row;justify-content:center;width:100vw">
+                    <a href="https://www.linkedin.com/in/piyush-mishra-778540268/" style="width:40px;height:40px;border:3px solid red;border-radius:50%;margin-right:10px;display:flex;justify-content:center;align-items:center;color:red"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/piyushmishra0620" style="width:40px;height:40px;border:3px solid red;border-radius:50%;margin-right:10px;display:flex;justify-content:center;align-items:center;color:red"><i class="fab fa-github"></i></a>
+                    <a href="https://x.com/piyushmish76012?t=FI_NJFuRRNyeqaRc5Q-_Vg&s=08" style="width:40px;height:40px;border:3px solid red;border-radius:50%;margin-right:10px;display:flex;justify-content:center;align-items:center;color:red"><i class="fab fa-x-twitter"></i></a>
+                </p>
+            </div>
+        </div>
+        <script>
+            const card=document.querySelector(".projects");
+            card.addEventListener("mouseenter",()=>{
+                card.classList.add("hover");
+            });
+            card.addEventListener("mouseleave",()=>{
+                card.classList.remove("hover");
+            });
+            card.addEventListener("touchstart",()=>{
+                card.classList.add("hover");
+            });
+            card.addEventListener("touchend",()=>{
+                card.classList.remove("hover");
+            });
+            const hamburger=document.getElementById("hamburger_menu");
+            const navmenu=document.getElementById("navigation_menu");
+            hamburger.addEventListener("click",()=>{
+                navmenu.classList.toggle("active");
+                hamburger.classList.toggle("active");
+            });
+        </script>
+    </body>
+</html>
